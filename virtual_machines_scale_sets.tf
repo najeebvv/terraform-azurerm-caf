@@ -8,7 +8,7 @@ module "virtual_machine_scale_sets" {
     module.keyvault_access_policies,
     module.keyvault_access_policies_azuread_apps,
     module.proximity_placement_groups,
-    #module.load_balancers,
+    module.load_balancers,
     module.application_gateways,
     module.application_security_groups,
     module.packer_service_principal,
