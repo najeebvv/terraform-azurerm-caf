@@ -27,6 +27,7 @@ variable "settings" {}
 
 variable "vnets" {}
 
+variable "virtual_subnets" {}
 
 # Security
 variable "public_key_pem_file" {
