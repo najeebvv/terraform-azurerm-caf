@@ -52,7 +52,7 @@ logic_app_standard = {
       "WEBSITE_NODE_DEFAULT_VERSION" = "~14",
     }
 
-  }
+  }  
 }
 
 vnets = {
