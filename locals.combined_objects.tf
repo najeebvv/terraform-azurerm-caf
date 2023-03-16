@@ -188,6 +188,7 @@ locals {
   combined_objects_wvd_host_pools                                 = merge(tomap({ (local.client_config.landingzone_key) = module.wvd_host_pools }), lookup(var.remote_objects, "wvd_host_pools", {}))
   combined_objects_wvd_workspaces                                 = merge(tomap({ (local.client_config.landingzone_key) = module.wvd_workspaces }), lookup(var.remote_objects, "wvd_workspaces", {}))
   combined_objects_route_tables                                   = merge(tomap({ (local.client_config.landingzone_key) = module.route_tables }), try(var.remote_objects.route_tables, {}))
+  combined_objects_route_tables                                   = merge(tomap({ (local.client_config.landingzone_key) = module.route_tables }), try(var.remote_objects.route_tables, {}))
 
   combined_objects_subscriptions = merge(
     tomap(
