@@ -63,41 +63,19 @@ variable "private_dns" {
 variable "public_network_access_enabled" {
   default = "true"
 }
-variable "location" {
-  description = "location of the resource if different from the resource group."
-  default     = null
-}
-variable "resource_group_name" {
-  description = "Resource group object to deploy the virtual machine"
-  default     = null
+
+variable "base_tags" {
+  type        = bool
+  description = "Base tags for the resource to be inherited from the resource group."
 }
 variable "resource_group" {
+  default     = null
   description = "Resource group object to deploy the virtual machine"
 }
-variable "base_tags" {
-  description = "Base tags for the resource to be inherited from the resource group."
-  type        = bool
-}
 
-variable "quarantine_policy_enabled" {
-  type = bool
-  default = false
+variable "resource_group_name" {
 }
-
-variable "retention_policy" {
-  default = {}
-}
-
-variable "trust_policy" {
-  default = {}
-}
-
-variable "zone_redundancy_enabled" {
-  type = bool
-  default = false
-}
-
-variable "export_policy_enabled" {
-  type = bool
-  default = true
+variable "location" {
+  default     = null
+  description = "location of the resource if different from the resource group."
 }
