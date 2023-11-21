@@ -450,3 +450,7 @@ variable "load_test" {
   default     = {}
 }
 
+
+variable "cost_anomaly_alert" {
+  default = {}
+}
