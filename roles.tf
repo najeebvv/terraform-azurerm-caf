@@ -169,13 +169,13 @@ locals {
     route_tables                               = local.combined_objects_route_tables
     servicebus_namespaces                      = local.combined_objects_servicebus_namespaces
     servicebus_topics                          = local.combined_objects_servicebus_topics
+    servicebus_queues                          = local.combined_objects_servicebus_queues
     storage_accounts                           = local.combined_objects_storage_accounts
     subscriptions                              = local.combined_objects_subscriptions
     synapse_workspaces                         = local.combined_objects_synapse_workspaces
     virtual_subnets                            = local.combined_objects_virtual_subnets
     virtual_machine_scale_sets                 = local.combined_objects_virtual_machine_scale_sets
     log_analytics                              = local.current_objects_log_analytics
-    route_tables                               = local.combined_objects_route_tables
     wvd_application_groups                     = local.combined_objects_wvd_application_groups
     wvd_applications                           = local.combined_objects_wvd_applications
     wvd_host_pools                             = local.combined_objects_wvd_host_pools
