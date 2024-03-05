@@ -50,6 +50,7 @@ locals {
   combined_objects_cosmos_dbs = merge(tomap({ (local.client_config.landingzone_key) = module.cosmos_dbs }), try(var.remote_objects.cosmos_dbs, {}), try(var.data_sources.cosmos_dbs, {}))
   combined_objects_cosmosdb_sql_databases = merge(tomap({ (local.client_config.landingzone_key) = module.cosmosdb_sql_databases }), try(var.remote_objects.cosmosdb_sql_databases, {}))
   combined_objects_custom_roles = merge(tomap({ (local.client_config.landingzone_key) = module.custom_roles }), try(var.remote_objects.custom_roles, {}))
+  combined_objects_cost_anomaly_alert = merge(tomap({ (local.client_config.landingzone_key) = module.cost_anomaly_alert }), try(var.remote_objects.cost_anomaly_alert, {}))
   combined_objects_data_factory = merge(tomap({ (local.client_config.landingzone_key) = module.data_factory }), try(var.remote_objects.data_factory, {}))
   combined_objects_data_factory_integration_runtime_azure_ssis = merge(tomap({ (local.client_config.landingzone_key) = module.data_factory_integration_runtime_azure_ssis }), try(var.remote_objects.combined_objects_data_factory_integration_runtime_azure_ssis, {}))
   combined_objects_data_factory_integration_runtime_self_hosted = merge(tomap({ (local.client_config.landingzone_key) = module.data_factory_integration_runtime_self_hosted }), try(var.remote_objects.data_factory_integration_runtime_self_hosted, {}))
@@ -82,6 +83,8 @@ locals {
   combined_objects_front_door = merge(tomap({ (local.client_config.landingzone_key) = module.front_doors }), try(var.remote_objects.front_doors, {}))
   combined_objects_front_door_waf_policies = merge(tomap({ (local.client_config.landingzone_key) = module.front_door_waf_policies }), try(var.remote_objects.front_door_waf_policies, {}))
   combined_objects_function_apps = merge(tomap({ (local.client_config.landingzone_key) = module.function_apps }), try(var.remote_objects.function_apps, {}))
+  combined_objects_gallery_application = merge(tomap({ (local.client_config.landingzone_key) = module.gallery_application }), try(var.remote_objects.gallery_application, {}))
+  combined_objects_gallery_application_version = merge(tomap({ (local.client_config.landingzone_key) = module.gallery_application_version }), try(var.remote_objects.gallery_application_version, {}))
   combined_objects_image_definitions = merge(tomap({ (local.client_config.landingzone_key) = module.image_definitions }), try(var.remote_objects.image_definitions, {}))
   combined_objects_integration_service_environment = merge(tomap({ (local.client_config.landingzone_key) = module.integration_service_environment }), try(var.remote_objects.integration_service_environment, {}))
   combined_objects_iot_central_application = merge(tomap({ (local.client_config.landingzone_key) = module.iot_central_application }), try(var.remote_objects.iot_central_application, {}))
@@ -176,7 +179,6 @@ locals {
   combined_objects_wvd_applications = merge(tomap({ (local.client_config.landingzone_key) = module.wvd_applications }), try(var.remote_objects.wvd_applications, {}))
   combined_objects_wvd_host_pools = merge(tomap({ (local.client_config.landingzone_key) = module.wvd_host_pools }), try(var.remote_objects.wvd_host_pools, {}))
   combined_objects_wvd_workspaces = merge(tomap({ (local.client_config.landingzone_key) = module.wvd_workspaces }), try(var.remote_objects.wvd_workspaces, {}))
-  combined_objects_cost_anomaly_alert = merge(tomap({ (local.client_config.landingzone_key) = module.cost_anomaly_alert }), try(var.remote_objects.cost_anomaly_alert, {}))
   
   combined_objects_subscriptions = merge(
     tomap(
