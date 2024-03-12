@@ -375,8 +375,6 @@ locals {
     automation_software_update_configurations = try(var.shared_services.automation_software_update_configurations, {})
     consumption_budgets                       = try(var.shared_services.consumption_budgets, {})
     image_definitions                         = try(var.shared_services.image_definitions, {})
-    gallery_application                       = try(var.shared_services.gallery_application, {})
-    gallery_application_version               = try(var.shared_services.gallery_application_version, {})
     log_analytics_storage_insights            = try(var.shared_services.log_analytics_storage_insights, {})
     monitor_autoscale_settings                = try(var.shared_services.monitor_autoscale_settings, {})
     monitor_action_groups                     = try(var.shared_services.monitor_action_groups, {})
