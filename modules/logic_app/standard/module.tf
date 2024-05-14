@@ -17,6 +17,9 @@ resource "azurerm_logic_app_standard" "logic_app_standard" {
   storage_account_access_key = local.storage_account.primary_access_key
   https_only                 = lookup(var.settings, "https_only", null)
   app_settings               = local.app_settings
+  version                    = lookup(var.settings, "version", null)
+
+  app_settings = local.app_settings
 
   dynamic "site_config" {
     for_each = lookup(var.settings, "site_config", {}) != {} ? [1] : []
@@ -42,14 +45,22 @@ resource "azurerm_logic_app_standard" "logic_app_standard" {
       }
     }
   }
+  dynamic "identity" {
+    for_each = lookup(var.settings, "identity", {}) != {} ? [1] : []
+    content {
+      type = lookup(var.settings.identity, "type", null)
+      identity_ids = try(try(lookup(var.settings.identity, "identity_ids"), [try(var.managed_identities[var.client_config.landingzone_key][var.settings.identity.key].id, var.managed_identities[var.settings.identity.lz_key][var.settings.identity.key].id)]), null)
+    }
+  }
+
 }
 
 resource "azurerm_app_service_virtual_network_swift_connection" "vnet_config" {
-  depends_on     = [azurerm_logic_app_standard.logic_app_standard]
-  count          = lookup(var.settings, "vnet_integration", {}) != {} ? 1 : 0
+  depends_on = [azurerm_logic_app_standard.logic_app_standard]
+  count      = lookup(var.settings, "vnet_integration", {}) != {} ? 1 : 0
 
   app_service_id = azurerm_logic_app_standard.logic_app_standard.id
-  subnet_id      = can(var.vnet_integration.subnet_id) ? var.vnet_integration.subnet_id : try(var.vnets[try(var.vnet_integration.lz_key, var.client_config.landingzone_key)][var.vnet_integration.vnet_key].subnets[var.vnet_integration.subnet_key].id,
-                    try(var.virtual_subnets[var.client_config.landingzone_key][var.vnet_integration.subnet_key].id, var.virtual_subnets[var.vnet_integration.lz_key][var.vnet_integration.subnet_key].id))
+  subnet_id = can(var.vnet_integration.subnet_id) ? var.vnet_integration.subnet_id : try(var.vnets[try(var.vnet_integration.lz_key, var.client_config.landingzone_key)][var.vnet_integration.vnet_key].subnets[var.vnet_integration.subnet_key].id,
+  try(var.virtual_subnets[var.client_config.landingzone_key][var.vnet_integration.subnet_key].id, var.virtual_subnets[var.vnet_integration.lz_key][var.vnet_integration.subnet_key].id))
 
 }
