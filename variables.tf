@@ -454,3 +454,6 @@ variable "load_test" {
 variable "cost_anomaly_alert" {
   default = {}
 }
+variable "invoice_sections" {
+  default = {}
+}
