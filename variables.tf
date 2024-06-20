@@ -441,3 +441,6 @@ variable "powerbi_embedded" {
 variable "cost_anomaly_alert" {
   default = {}
 }
+variable "invoice_sections" {
+  default = {}
+}
