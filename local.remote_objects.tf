@@ -42,6 +42,7 @@ locals {
     cosmos_dbs                                     = try(local.combined_objects_cosmos_dbs, null)
     cost_anomaly_alert                             = try(local.combined_objects_cost_anomaly_alert, null)
     databricks_workspaces                          = try(local.combined_objects_databricks_workspaces, null)
+    cost_anomaly_alert                             = try(local.combined_objects_cost_anomaly_alert, null)
     data_factory                                   = try(local.combined_objects_data_factory, null)
     data_factory_integration_runtime_azure_ssis    = try(local.combined_objects_data_factory_integration_runtime_azure_ssis, null)
     data_factory_linked_service_azure_blob_storage = try(local.combined_objects_data_factory_linked_service_azure_blob_storage, null)

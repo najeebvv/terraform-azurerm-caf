@@ -46,6 +46,7 @@ module "eventgrid_event_subscription" {
   client_config   = local.client_config
   settings        = each.value
 
+
   remote_objects = {
     all                    = local.remote_objects,
     functions              = local.combined_objects_function_apps,
