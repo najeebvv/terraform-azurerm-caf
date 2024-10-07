@@ -68,17 +68,13 @@ variable "base_tags" {
   type        = bool
   description = "Base tags for the resource to be inherited from the resource group."
 }
-
 variable "resource_group" {
-  description = "Resource group object to deploy the virtual machine"
   default     = null
-
+  description = "Resource group object to deploy the virtual machine"
 }
 
 variable "resource_group_name" {
 }
-
-
 variable "location" {
   default     = null
   description = "location of the resource if different from the resource group."

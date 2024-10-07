@@ -1,8 +1,8 @@
 variable "global_settings" {
-  description = "Global settings object (see module README.md)"
+  description = "Global settings object"
 }
 variable "client_config" {
-  description = "Client configuration object (see module README.md)."
+  description = "Client configuration object."
 }
 variable "settings" {
   description = "(Required) Used to handle passthrough paramenters."
