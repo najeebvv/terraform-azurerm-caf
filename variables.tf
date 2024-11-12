@@ -454,12 +454,10 @@ variable "load_test" {
 variable "cost_anomaly_alert" {
   default = {}
 }
-<<<<<<< HEAD
+
 variable "mi_federated_credentials" {
   default = {}
 }
-=======
 variable "invoice_sections" {
   default = {}
 }
->>>>>>> flender
