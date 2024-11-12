@@ -109,9 +109,6 @@ module "event_hubs" {
   resource_group_name = local.combined_objects_resource_groups[try(each.value.lz_key, local.client_config.landingzone_key)][try(each.value.resource_group_key, each.value.resource_group.key)].name
 }
 
-output "event_hubs" {
-  value = module.event_hubs
-}
 
 module "event_hub_auth_rules" {
   source   = "./modules/event_hubs/hubs/auth_rules"
