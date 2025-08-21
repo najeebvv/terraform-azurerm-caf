@@ -63,3 +63,15 @@ variable "diagnostics" {
 variable "custom_domains" {
   default = {}
 }
+
+variable "remote_objects" {
+  default = {}
+}
+
+variable "app_settings" {
+  default = null
+}
+
+variable "settings" {
+  default = {}
+}

@@ -18,6 +18,9 @@ module "static_sites" {
   diagnostics         = local.combined_diagnostics
   tags                = try(each.value.tags, null)
   custom_domains      = try(each.value.custom_domains, {})
+  remote_objects      = local.remote_objects
+  app_settings        = try(each.value.app_settings, {})
+  settings            = try(each.value.settings, {})
 }
 
 output "static_sites" {
