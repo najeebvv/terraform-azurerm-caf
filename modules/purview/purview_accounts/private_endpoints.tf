@@ -6,7 +6,9 @@
 
 module "private_endpoint" {
   source   = "../../networking/private_endpoint"
-  for_each = try(var.settings.private_endpoints, {})
+  for_each = {
+    for k,v in var.settings.managed_resources_private_endpoints : k => v if lookup(v, "ignore_private_dns_zone_group", false) == false
+  }
 
   base_tags           = var.base_tags
   tags                = local.tags
@@ -24,7 +26,9 @@ module "private_endpoint" {
 # Requires azurerm >=2.92.0
 module "managed_resources_private_endpoints" {
   source   = "../../networking/private_endpoint"
-  for_each = try(var.settings.managed_resources_private_endpoints, {})
+  for_each = {
+    for k,v in var.settings.managed_resources_private_endpoints : k => v if lookup(v, "ignore_private_dns_zone_group", false) == true
+  }
 
   base_tags           = var.base_tags
   tags                = local.tags
@@ -32,7 +36,6 @@ module "managed_resources_private_endpoints" {
   global_settings     = var.global_settings
   location            = local.location
   name                = each.value.name
-  private_dns         = var.private_dns
   resource_group_name = local.resource_group_name
   resource_id         = each.value.name == "eventhub" ? azurerm_purview_account.pva.managed_resources[0].event_hub_namespace_id : azurerm_purview_account.pva.managed_resources[0].storage_account_id
   settings            = each.value
