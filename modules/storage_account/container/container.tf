@@ -9,7 +9,7 @@ resource "azurerm_storage_container" "stg" {
 }
 
 resource "azurerm_storage_container_immutability_policy" "stg" {
-  for_each                              = try(var.settings.immutability_policy, null) == null ? [] : [1]
+  count                                 = try(var.settings.immutability_policy, null) == null ? 0 : 1
   storage_container_resource_manager_id = azurerm_storage_container.stg.resource_manager_id
   immutability_period_in_days           = var.settings.immutability_policy.immutability_period_in_days
   locked                                = try(var.settings.immutability_policy.locked, null)
